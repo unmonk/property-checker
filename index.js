@@ -50,9 +50,9 @@ function isString(data) {
  */
 function doesPropertyExist(object, property) {
 
-    var ans = false;
+    let ans = false;
 
-    if(isObject(object) && isString(property) && object[property] != null) { // jshint ignore: line
+    if(isObject(object) && object[property] != null) { // jshint ignore: line
         ans = true;
     }
 
@@ -68,13 +68,13 @@ function doesPropertyExist(object, property) {
  */
 function doesAnyPropertyExist(object, arrayOfProperties) {
 
-    var ans = false;
+    let ans = false;
 
     if (isObject(object) && isArray(arrayOfProperties)) {
 
-        var length = arrayOfProperties.length;
+        const length = arrayOfProperties.length;
 
-        for (var i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
             if(doesPropertyExist(object, arrayOfProperties[i])) {
                 ans = true;
                 break;
@@ -94,7 +94,7 @@ function doesAnyPropertyExist(object, arrayOfProperties) {
  */
 function doAllPropertiesExist(object, arrayOfProperties) {
 
-    var ans = true;
+    let ans = true;
 
     if (!isObject(object) || !isPopulatedArray(arrayOfProperties)) {
 
@@ -102,9 +102,9 @@ function doAllPropertiesExist(object, arrayOfProperties) {
 
     } else {
 
-        var length = arrayOfProperties.length;
+        const length = arrayOfProperties.length;
 
-        for (var i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
             if(!doesPropertyExist(object, arrayOfProperties[i])) {
                 ans = false;
                 break;
@@ -123,14 +123,35 @@ function doAllPropertiesExist(object, arrayOfProperties) {
  */
 function propertiesExist(object) {
 
-    var ans = false;
+    let ans = false;
 
     if (typeof object === 'object') {
-        for(var key in object) {
+        for(const key in object) {
             if(object.hasOwnProperty(key)) {
                 ans = true;
                 break;
             }
+        }
+    }
+
+    return ans;
+}
+
+
+/**
+ * Returns true if a property is read-only, otherwise false is returned
+ * @param object
+ * @param prop
+ * @returns {boolean}
+ */
+function isReadOnly(object, prop) {
+
+    let ans = false;
+
+    if (typeof object === 'object') {
+        const descriptor = Object.getOwnPropertyDescriptor(object, prop);
+        if(descriptor.writable === false){
+            ans = true;
         }
     }
 
@@ -145,5 +166,6 @@ module.exports = {
     isString: isString,
     isObject: isObject,
     isArray: isArray,
-    isPopulatedArray: isPopulatedArray
+    isPopulatedArray: isPopulatedArray,
+    isReadOnly: isReadOnly
 };

@@ -104,6 +104,15 @@ describe('#propertyCheck', function() {
         const result = propertyCheck.doAllPropertiesExist(object, propertyArray);
         expect(result).to.equal(false);
     });
+    it('should return true if a property from an object is read-only', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test",
+            writable: false
+        });
+        const result = propertyCheck.isReadOnly(object, "test");
+        expect(result).to.equal(true);
+    });
 
 
 
