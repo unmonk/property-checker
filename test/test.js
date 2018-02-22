@@ -113,6 +113,15 @@ describe('#propertyCheck', function() {
         const result = propertyCheck.isReadOnly(object, "test");
         expect(result).to.equal(true);
     });
+    it('should return false if a property is not enumerable', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test",
+            enumerable: false
+        });
+        const result = propertyCheck.isPropertyEnumerable(object, "test");
+        expect(result).to.equal(false);
+    });
 
 
 
