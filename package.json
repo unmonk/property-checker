@@ -1,6 +1,6 @@
 {
   "name": "property-checker",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Small utility to check for properties on an object",
   "main": "index.js",
   "scripts": {
