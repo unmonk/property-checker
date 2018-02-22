@@ -175,6 +175,23 @@ function isPropertyEnumerable(object, prop) {
 }
 
 
+/**
+ * Returns true if a property is configurable, otherwise false is returned
+ * @param object
+ * @param prop
+ * @returns {boolean}
+ */
+function isPropertyConfigurable(object, prop) {
+    let ans = false;
+
+    if (typeof object === 'object') {
+        const descriptor = Object.getOwnPropertyDescriptor(object, prop);
+        ans  = descriptor.configurable;
+    }
+    return ans;
+}
+
+
 module.exports = {
     doesPropertyExist: doesPropertyExist,
     doesAnyPropertyExist: doesAnyPropertyExist,
@@ -185,5 +202,6 @@ module.exports = {
     isArray: isArray,
     isPopulatedArray: isPopulatedArray,
     isReadOnly: isReadOnly,
-    isPropertyEnumerable: isPropertyEnumerable
+    isPropertyEnumerable: isPropertyEnumerable,
+    isPropertyConfigurable: isPropertyConfigurable
 };

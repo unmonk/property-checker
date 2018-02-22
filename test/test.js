@@ -113,6 +113,15 @@ describe('#propertyCheck', function() {
         const result = propertyCheck.isReadOnly(object, "test");
         expect(result).to.equal(true);
     });
+    it('should return false if a property from an object is writable', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test",
+            writable: false
+        });
+        const result = propertyCheck.isReadOnly(object, "test");
+        expect(result).to.equal(true);
+    });
     it('should return false if a property is not enumerable', function () {
         const object = {};
         Object.defineProperty(object, "test", {
@@ -121,6 +130,32 @@ describe('#propertyCheck', function() {
         });
         const result = propertyCheck.isPropertyEnumerable(object, "test");
         expect(result).to.equal(false);
+    });
+    it('should return true if a property is enumerable', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test",
+            enumerable: true
+        });
+        const result = propertyCheck.isPropertyEnumerable(object, "test");
+        expect(result).to.equal(true);
+    });
+    it('should return false if a property is not configurable', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test"
+        });
+        const result = propertyCheck.isPropertyConfigurable(object, "test");
+        expect(result).to.equal(false);
+    });
+    it('should return true if a property is configurable', function () {
+        const object = {};
+        Object.defineProperty(object, "test", {
+            value: "test",
+            configurable: true
+        });
+        const result = propertyCheck.isPropertyConfigurable(object, "test");
+        expect(result).to.equal(true);
     });
 
 

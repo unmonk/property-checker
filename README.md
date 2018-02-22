@@ -23,6 +23,7 @@ A small library that can be used to check objects for certain properties.
 
     propCheck.isReadOnly(object, property);
     propCheck.isPropertyEnumerable(object, property);
+    propcheck.isPropertyConfigurable(object, property);
 
 
 
