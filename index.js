@@ -158,6 +158,23 @@ function isReadOnly(object, prop) {
     return ans;
 }
 
+/**
+ * Returns true if a property is enumerable, otherwise false is returned
+ * @param object
+ * @param prop
+ * @returns {boolean}
+ */
+function isPropertyEnumerable(object, prop) {
+    let ans = false;
+
+    if (typeof object === 'object') {
+        const descriptor = Object.getOwnPropertyDescriptor(object, prop);
+        ans  = descriptor.enumerable;
+    }
+    return ans;
+}
+
+
 module.exports = {
     doesPropertyExist: doesPropertyExist,
     doesAnyPropertyExist: doesAnyPropertyExist,
@@ -167,5 +184,6 @@ module.exports = {
     isObject: isObject,
     isArray: isArray,
     isPopulatedArray: isPopulatedArray,
-    isReadOnly: isReadOnly
+    isReadOnly: isReadOnly,
+    isPropertyEnumerable: isPropertyEnumerable
 };

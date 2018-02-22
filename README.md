@@ -21,10 +21,13 @@ A small library that can be used to check objects for certain properties.
     propCheck.doesAnyPropertyExist(object, arrayOfProperties);
     propCheck.doAllPropertiesExist(object, arrayOfProperties);
 
+    propCheck.isReadOnly(object, property);
+    propCheck.isPropertyEnumerable(object, property);
 
 
-  
-  
+
+
+
   All outputs are Booleans
 
 
