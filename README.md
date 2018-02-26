@@ -12,9 +12,15 @@ A small library that can be used to check objects for certain properties.
     const propCheck = require('property-checker');
 
     propCheck.isString(string);
+    propCheck.isNumber(number);
+    propCheck.isFloat(number);
+    propCheck.isSymbol(symbol)
     propCheck.isArray(array);
     propCheck.isObject(object);
+
     propCheck.isPopulatedArray(array);
+    propCheck.doesArrayContain(array, property);
+
 
     propCheck.propertiesExist(object);
     propCheck.doesPropertyExist(object, property);
@@ -27,11 +33,4 @@ A small library that can be used to check objects for certain properties.
 
 
 
-
-
   All outputs are Booleans
-
-
-## Tests
-
-  `npm test`

@@ -40,6 +40,45 @@ function isString(data) {
     return !!data && typeof data === 'string';
 }
 
+/**
+ *
+ * Returns true if a Boolean
+ * @param data
+ * @returns {boolean}
+ */
+function isBoolean(data) {
+    return !!data && typeof data === 'boolean';
+}
+
+/**
+ *
+ * Returns true if a Symbol
+ * @param data
+ * @returns {boolean}
+ */
+function isSymbol(data) {
+    return !!data && typeof data === 'symbol';
+}
+
+/**
+ *
+ * Returns true if a Number
+ * @param data
+ * @returns {boolean}
+ */
+function isNumber(data) {
+    return !!data && typeof data === 'number';
+}
+
+/**
+ *
+ * Returns true if a Float
+ * @param data
+ * @returns {boolean}
+ */
+function isFloat(data) {
+    return !!data && (data % 1 !== 0);
+}
 
 /**
  *
@@ -54,6 +93,28 @@ function doesPropertyExist(object, property) {
 
     if(isObject(object) && object[property] != null) { // jshint ignore: line
         ans = true;
+    }
+
+    return ans;
+}
+
+/**
+ *
+ * Checks object for a given property
+ * @param array
+ * @param property
+ * @returns {boolean}
+ */
+function doesArrayContain(array, property) {
+
+    let ans = false;
+
+    if(isArray(array) && property !== null) { // jshint ignore: line
+        array.forEach(function(item){
+            if(item === property){
+                ans = true;
+            }
+        });
     }
 
     return ans;
@@ -115,7 +176,6 @@ function doAllPropertiesExist(object, arrayOfProperties) {
     return ans;
 }
 
-
 /**
  * Returns true if properties exist on the object, otherwise false is returned
  * @param object
@@ -136,7 +196,6 @@ function propertiesExist(object) {
 
     return ans;
 }
-
 
 /**
  * Returns true if a property is read-only, otherwise false is returned
@@ -174,7 +233,6 @@ function isPropertyEnumerable(object, prop) {
     return ans;
 }
 
-
 /**
  * Returns true if a property is configurable, otherwise false is returned
  * @param object
@@ -191,8 +249,8 @@ function isPropertyConfigurable(object, prop) {
     return ans;
 }
 
-
 module.exports = {
+    doesArrayContain: doesArrayContain,
     doesPropertyExist: doesPropertyExist,
     doesAnyPropertyExist: doesAnyPropertyExist,
     doAllPropertiesExist: doAllPropertiesExist,
@@ -200,8 +258,13 @@ module.exports = {
     isString: isString,
     isObject: isObject,
     isArray: isArray,
+    isSymbol: isSymbol,
+    isBoolean: isBoolean,
+    isFloat: isFloat,
+    isNumber: isNumber,
     isPopulatedArray: isPopulatedArray,
     isReadOnly: isReadOnly,
     isPropertyEnumerable: isPropertyEnumerable,
     isPropertyConfigurable: isPropertyConfigurable
+
 };

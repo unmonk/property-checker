@@ -35,6 +35,46 @@ describe('#propertyCheck', function() {
         const result = propertyCheck.isString(string);
         expect(result).to.equal(false);
     });
+    it('should return true if a number', function () {
+        const string = 1;
+        const result = propertyCheck.isNumber(string);
+        expect(result).to.equal(true);
+    });
+    it('should return false if not a number', function () {
+        const string = 'a';
+        const result = propertyCheck.isNumber(string);
+        expect(result).to.equal(false);
+    });
+    it('should return false if not a boolean', function () {
+        const bool = 'a';
+        const result = propertyCheck.isBoolean(bool);
+        expect(result).to.equal(false);
+    });
+    it('should return true if a boolean', function () {
+        const bool = true;
+        const result = propertyCheck.isBoolean(bool);
+        expect(result).to.equal(true);
+    });
+    it('should return false if not a float', function () {
+        const float = 5;
+        const result = propertyCheck.isFloat(float);
+        expect(result).to.equal(false);
+    });
+    it('should return true if a float', function () {
+        const float = 5.5;
+        const result = propertyCheck.isFloat(float);
+        expect(result).to.equal(true);
+    });
+    it('should return true if a symbol', function () {
+        const a = Symbol(42);
+        const result = propertyCheck.isSymbol(a);
+        expect(result).to.equal(true);
+    });
+    it('should return false if not a symbol', function () {
+        const a = 1;
+        const result = propertyCheck.isSymbol(a);
+        expect(result).to.equal(false);
+    });
     it('should return true if a populated Array', function () {
         const array = [1,2,3];
         const result = propertyCheck.isPopulatedArray(array);
@@ -156,6 +196,16 @@ describe('#propertyCheck', function() {
         });
         const result = propertyCheck.isPropertyConfigurable(object, "test");
         expect(result).to.equal(true);
+    });
+    it('should return true if the given property is in the given array', function () {
+        const array = [1,2,3];
+        const result = propertyCheck.doesArrayContain(array, 2);
+        expect(result).to.equal(true);
+    });
+    it('should return false if the given property is not in the given array', function () {
+        const array = [1,2,3];
+        const result = propertyCheck.doesArrayContain(array, "2");
+        expect(result).to.equal(false);
     });
 
 
