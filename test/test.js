@@ -207,8 +207,15 @@ describe('#propertyCheck', function() {
         const result = propertyCheck.doesArrayContain(array, "2");
         expect(result).to.equal(false);
     });
-
-
-
+    it('should return true if the given array is two dimensional', function () {
+        const array = [[1,2,3]];
+        const result = propertyCheck.is2dArray(array);
+        expect(result).to.equal(true);
+    });
+    it('should return false if the given array is not two dimensional', function () {
+        const array = [1,2,3];
+        const result = propertyCheck.is2dArray(array);
+        expect(result).to.equal(false);
+    });
 
 });

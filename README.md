@@ -16,6 +16,7 @@ A small library that can be used to check objects for certain properties.
     propCheck.isFloat(number);
     propCheck.isSymbol(symbol)
     propCheck.isArray(array);
+    propCheck.is2dArray(array);
     propCheck.isObject(object);
 
     propCheck.isPopulatedArray(array);
