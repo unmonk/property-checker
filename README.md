@@ -1,5 +1,7 @@
 # Property-Checker
 
+![Tests](https://github.com/unmonk/property-checker/workflows/Test%20Package/badge.svg?branch=master)
+
 A small library that can be used to check objects for certain properties.
 
 ## Installation
