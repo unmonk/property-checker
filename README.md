@@ -1,11 +1,12 @@
-Property-Checker
-================
+# Property-Checker
+
+![Tests](https://github.com/unmonk/property-checker/workflows/Test%20Package/badge.svg?branch=master)
 
 A small library that can be used to check objects for certain properties.
 
 ## Installation
 
-  `npm install  property-checker`
+`npm install property-checker`
 
 ## Usage
 
@@ -32,6 +33,4 @@ A small library that can be used to check objects for certain properties.
     propCheck.isPropertyEnumerable(object, property);
     propcheck.isPropertyConfigurable(object, property);
 
-
-
-  All outputs are Booleans
+All outputs are Booleans
