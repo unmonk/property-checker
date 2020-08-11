@@ -1,5 +1,5 @@
 {
-  "name": "property-checker",
+  "name": "@unmonk/property-checker",
   "version": "0.4.2",
   "description": "Small utility to check for properties on an object",
   "main": "index.js",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.1.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
